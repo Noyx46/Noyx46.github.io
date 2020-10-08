@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+}
+
+.content h1 {
+    font-family: "Open Sans", sans-serif;
+}
+
+.content p {
+    font-family: "Lora", serif;
+}
