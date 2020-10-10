@@ -42,8 +42,18 @@ ul.nav li a {
     }
 }
 
-.nav li a.active {
+ul.nav li a.active {
     background-color: #678596;
+}
+
+ul.nav li a:hover {
+    background-color: #a7b7cf;
+    color: #1e2020
+}
+
+ul.nav li a.active:hover {
+    background-color: #678596;
+    color: #dce4e3;
 }
 
 .content {
