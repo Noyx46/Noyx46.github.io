@@ -104,7 +104,7 @@ p.caption {
 }
 
 .list a, .list p {
-    display: table;
+    display: block;
     font-size: 1em;
     margin: 0;
 }
