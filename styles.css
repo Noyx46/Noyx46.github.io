@@ -97,16 +97,37 @@ p.caption {
     margin: 0 0 2px 0;
 }
 
-p a:link {
+.list {
+    font-family: "Lora", serif;
+    font-size: 0.875em;
+    margin: 8px 0;
+}
+
+.list a, .list p {
+    display: table;
+    font-size: 1em;
+    margin: 0;
+}
+
+a:link {
     color: #386cb9;
 }
 
-p a:link:active, p a:link:hover p a:visited {
+a:link:active, a:link:hover, a:visited {
     color: #7f4cc2;
 }
 
-p a:visited:active, p a:visited:hover {
+a:visited:active, a:visited:hover {
     color: #b34792;
+}
+
+.list a:link, .list a:visited {
+    box-shadow: inset 0 -1px 0 #777b7e66;
+    text-decoration: none;
+}
+
+.list a:hover, .list a:active {
+    box-shadow: inset 0 -1.2em 0 #b9c0c466;
 }
 
 table, th, td {
