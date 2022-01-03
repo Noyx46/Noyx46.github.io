@@ -1,0 +1,33 @@
+.game-grid {
+  background-color: var(--bg2);
+  border: 10px solid var(--bg1);
+  display: flex;
+  flex-flow: row wrap;
+  height: 640px;
+  margin: 50px auto;
+  width: 640px;
+}
+
+.game-row {
+  display: flex;
+  flex: row;
+}
+
+.game-grid .game-row .game-tile {
+  width: 80px;
+  height: 80px;
+  background-color: var(--grey2);
+  color: var(--bg0);
+}
+
+.game-grid .game-row .game-tile:nth-child(2n) {
+  background-color: var(--grey0);
+}
+
+.game-grid .game-row:nth-child(2n) .game-tile {
+  background-color: var(--grey0);
+}
+
+.game-grid .game-row:nth-child(2n) .game-tile:nth-child(2n) {
+  background-color: var(--grey2);
+}
