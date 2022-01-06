@@ -1,33 +1,28 @@
-.game-grid {
-  background-color: var(--bg2);
-  border: 10px solid var(--bg1);
+.game-container {
   display: flex;
-  flex-flow: row wrap;
-  height: 640px;
+  flex-direction: row;
+}
+
+.game-board-container {
+  display: inline-block;
+  flex: none;
   margin: 50px auto;
+}
+
+.game-board-container::before {
+  flex: auto;
+}
+
+.game-board-container::after {
+  flex: auto;
+}
+
+.game-board {
+  background-image: url("../images/chess_board_everforest.png");
+  height: 640px;
   width: 640px;
 }
 
-.game-row {
-  display: flex;
-  flex: row;
-}
-
-.game-grid .game-row .game-tile {
-  width: 80px;
-  height: 80px;
-  background-color: var(--grey2);
-  color: var(--bg0);
-}
-
-.game-grid .game-row .game-tile:nth-child(2n) {
-  background-color: var(--grey0);
-}
-
-.game-grid .game-row:nth-child(2n) .game-tile {
-  background-color: var(--grey0);
-}
-
-.game-grid .game-row:nth-child(2n) .game-tile:nth-child(2n) {
-  background-color: var(--grey2);
+.game-board div {
+  position: absolute;
 }
