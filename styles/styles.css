@@ -4,6 +4,7 @@ html {
   display: flex;
   flex-direction: column;
   font-family: "Source Serif Pro", serif;
+  font-size: 16px;
 }
 
 body.theme {
@@ -12,12 +13,12 @@ body.theme {
 }
 
 .container {
-  margin: 20px 40px;
+  margin: 1.25rem 2.5rem;
 }
 
 h1 {
   font-family: "Fira Sans", sans-serif;
-  margin: 2px 0 10px 0;
+  margin: .25rem 0 .5rem 0;
 }
 
 .link-list {
@@ -28,6 +29,16 @@ h1 {
 a {
   color: var(--theme-blue);
   text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+blockquote {
+  border-left: 0.25rem solid var(--bg2);
+  margin: 0.5rem 0.125rem;
+  padding-left: 1rem;
 }
 
 code {

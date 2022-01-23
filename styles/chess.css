@@ -6,7 +6,7 @@
 .game-board-container {
   display: inline-block;
   flex: none;
-  margin: 50px auto;
+  margin: 4rem auto;
 }
 
 .game-board-container::before {
@@ -19,10 +19,17 @@
 
 .game-board {
   background-image: url("../images/chess_board_everforest.png");
-  height: 640px;
-  width: 640px;
+  height: 40rem;
+  width: 40rem;
 }
 
-.game-board div {
+.game-piece {
+  height: 5rem;
+  width: 5rem;
+}
+
+.game-highlight {
+  height: 5rem;
   position: absolute;
+  width: 5rem;
 }

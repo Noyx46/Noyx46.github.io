@@ -1,5 +1,3 @@
-let hltiles = []
-
 $(".game-board").contextmenu((e) => {
   e.preventDefault();
 
@@ -9,7 +7,7 @@ $(".game-board").contextmenu((e) => {
   let mouseY = e.pageY - offset.top;
 
   let color = "red";
-  if (e.altKey) {
+  if (e.altKey || e.shiftKey) {
     if (e.ctrlKey) {
       color = "green";
     } else {
@@ -23,7 +21,7 @@ $(".game-board").contextmenu((e) => {
 })
 
 $(".game-board").click((e) => {
-  $(".highlight-tile").remove();
+  $(".game-highlight").remove();
 })
 
 // Create a highlight at a certain coordinate
@@ -44,12 +42,10 @@ function highlightTile(x, y, c) {
   let color = getComputedStyle($("body").get(0)).getPropertyValue(`--${c}` || "--red");
   let xpx = `${x * 80}px`;
   let ypx = `${y * 80}px`;
-  let hl = $("<div>", {
-    width: "80px",
-    height: "80px",
-  }).css("background-color", color + "cc")
+  let hl = $("<div>")
+    .css("background-color", color + "cc")
     .css("transform", `translate(${xpx}, ${ypx})`)
-    .addClass("highlight-tile")
+    .addClass("game-highlight")
     .addClass(`cco-${x}${y}`)
     .addClass(`hl-${c}`);
   $(".game-board").append(hl);
