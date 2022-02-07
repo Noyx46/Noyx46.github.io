@@ -4,7 +4,24 @@ html {
   display: flex;
   flex-direction: column;
   font-family: "Source Serif Pro", serif;
-  font-size: 16px;
+}
+
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 10px;
+  }
 }
 
 body.theme {

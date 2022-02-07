@@ -19,6 +19,7 @@
 
 .game-board {
   background-image: url("../images/chess_board_everforest.png");
+  background-size: cover;
   height: 40rem;
   width: 40rem;
 }
@@ -28,7 +29,7 @@
   width: 5rem;
 }
 
-.game-highlight {
+.game-tile-highlight {
   height: 5rem;
   position: absolute;
   width: 5rem;

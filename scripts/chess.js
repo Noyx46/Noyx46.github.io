@@ -1,4 +1,7 @@
-$(".game-board").contextmenu((e) => {
+const DIMENSIONS = 8;
+const TILE_SIZE = $(".game-board").width() / 8;
+
+$(".game-board").contextmenu(function (e) {
   e.preventDefault();
 
   // Get mouse position
@@ -6,47 +9,54 @@ $(".game-board").contextmenu((e) => {
   let mouseX = e.pageX - offset.left;
   let mouseY = e.pageY - offset.top;
 
-  let color = "red";
-  if (e.altKey || e.shiftKey) {
-    if (e.ctrlKey) {
-      color = "green";
-    } else {
-      color = "yellow";
-    }
-  } else if (e.ctrlKey) {
+  // Change the color depending on modifer keys
+  let yellow = e.ctrlKey;
+  let blue = e.altKey || e.shiftKey;
+
+  let color;
+  if (yellow && blue) {
+    color = "green";
+  } else if (yellow) {
+    color = "yellow";
+  } else if (blue) {
     color = "blue";
+  } else {
+    color = "red"
   }
 
-  highlightTile(Math.floor(mouseX / 80), Math.floor(mouseY / 80), color);
+  let boardX = Math.floor(mouseX / TILE_SIZE);
+  let boardY = Math.floor(mouseY / TILE_SIZE);
+  highlightTile(boardX, boardY, color);
 })
 
-$(".game-board").click((e) => {
+$(".game-board").click(function (e) {
   $(".game-highlight").remove();
 })
 
-// Create a highlight at a certain coordinate
-// x: x-coordinate on board
-// y: y-coordinate on board
-// c: color variable ("red")
-function highlightTile(x, y, c) {
-  // Check for highlighted tile in position
-  if ($(`.cco-${x}${y}`).length) {
-    if ($(`.cco-${x}${y}.hl-${c}`).length) {
-      $(`.cco-${x}${y}.hl-${c}`).remove();
+function highlightTile(boardX, boardY, color) {
+  let match = $(`.game-tile-${boardX}${boardY}`)
+  if (match.length) {
+    if (match.hasClass(`game-tile-${color}`)) {
+      match.remove();
       return;
     } else {
-      $(`.cco-${x}${y}`).remove();
+      match.remove();
     }
   }
 
-  let color = getComputedStyle($("body").get(0)).getPropertyValue(`--${c}` || "--red");
-  let xpx = `${x * 80}px`;
-  let ypx = `${y * 80}px`;
-  let hl = $("<div>")
-    .css("background-color", color + "cc")
-    .css("transform", `translate(${xpx}, ${ypx})`)
-    .addClass("game-highlight")
-    .addClass(`cco-${x}${y}`)
-    .addClass(`hl-${c}`);
-  $(".game-board").append(hl);
+  let bodyStyle = getComputedStyle($("body").get(0));
+  let colorHex = bodyStyle.getPropertyValue(`--${color}` || "--red");
+  let transparentColorHex = colorHex + "cc";
+
+  let translateX = `${boardX * TILE_SIZE}px`;
+  let translateY = `${boardY * TILE_SIZE}px`;
+
+  let tile = $("<div>")
+    .css("background-color", transparentColorHex)
+    .css("transform", `translate(${translateX}, ${translateY})`)
+    .addClass("game-tile-highlight")
+    .addClass(`game-tile-${boardX}${boardY}`)
+    .addClass(`game-tile-${color}`);
+
+  $(".game-board").append(tile);
 }
